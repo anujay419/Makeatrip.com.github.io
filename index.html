@@ -49,6 +49,9 @@
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/index1.js"></script>
+	<script src="js/index2.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -84,7 +87,7 @@
 								<li><a href="blog.html">Blog</a></li>
 								<li><a href="about.html">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
-								<li><a href="#">Login</a></li>
+								<li><a href="login.html">Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -163,51 +166,49 @@
 						</div>
 						<div class="tab-content">
 							<div id="flight" class="tab-pane fade in active">
-								<form method="post" class="colorlib-form">
+								<form action="flight.html" method="post" class="colorlib-form">
 				              	<div class="row">
 				              	 <div class="col-md-3">
 				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
+				                    <label for="date">From:</label>
 				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
+				                      <input type="text" id="location1" class="form-control" placeholder="Search Location" required name="from">
 				                    </div>
 				                  </div>
 				              	 </div>
 				                <div class="col-md-2">
 				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
+				                    <label for="date">To:</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+				                        <input type="text" id="location2" class="form-control" placeholder="Search Location" required name="to">
 				                    </div>
 				                  </div>
 				                </div>
 				                <div class="col-md-2">
 				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
+				                    <label for="date">Departure:</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
+				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date" name="date">
 				                    </div>
 				                  </div>
 				                </div>
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
+				                    <label for="guests">Class</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
+				                      <select name="people" id="class" class="form-control" required>
+				                        <option value="Economy">Economy</option>
+				                        <option value="Premium Economy">Premium Economy</option>
+				                        <option value="Business">Business</option>
+				                        
 				                      </select>
 				                    </div>
 				                  </div>
 				                </div>
 				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
+				                  <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block" onclick="handleSubmit ()"/>
 				                </div>
 				              </div>
 				            </form>
@@ -261,13 +262,13 @@
 				            </form>
 						   </div>
 						   <div id="car" class="tab-pane fade">
-						   	<form method="post" class="colorlib-form">
+						   	<form action="cars.html"  method="post" class="colorlib-form">
 				              	<div class="row">
 				              	 <div class="col-md-4">
 				              	 	<div class="form-group">
 				                    <label for="date">Where:</label>
 				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
+				                      <input type="text" id="loc" class="form-control" placeholder="Search Location">
 				                    </div>
 				                  </div>
 				              	 </div>
@@ -276,7 +277,7 @@
 				                    <label for="date">Start Date:</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+				                      <input type="text" id="sdate" class="form-control date" placeholder="Check-in date">
 				                    </div>
 				                  </div>
 				                </div>
@@ -285,24 +286,25 @@
 				                    <label for="date">Return Date:</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
+				                      <input type="text" id="rdate" class="form-control date" placeholder="Check-out date">
 				                    </div>
 				                  </div>
 				                </div>
+								
 				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Car" class="btn btn-primary btn-block">
+				                  <input type="submit" name="submit" id="submit" value="Find Car" class="btn btn-primary btn-block" onclick="handleSubmi ()"/>
 				                </div>
 				              </div>
 				            </form>
 						   </div>
 						   <div id="cruises" class="tab-pane fade">
-						      <form method="post" class="colorlib-form">
+						      <form action="train.html" method="post" class="colorlib-form">
 				              	<div class="row">
 				              	 <div class="col-md-4">
 				              	 	<div class="form-group">
 				                    <label for="date">Where:</label>
 				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
+				                      <input type="text" id="desti" class="form-control" placeholder="Search Location">
 				                    </div>
 				                  </div>
 				              	 </div>
@@ -311,7 +313,7 @@
 				                    <label for="date">Start Date:</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+				                      <input type="text" id="ddate" class="form-control date" placeholder="Check-in date">
 				                    </div>
 				                  </div>
 				                </div>
@@ -321,16 +323,16 @@
 				                    <div class="form-field">
 				                      <i class="icon icon-arrow-down3"></i>
 				                      <select name="category" id="category" class="form-control">
-				                        <option value="#">AC</option>
-				                        <option value="#">Non-AC</option>
-				                        <option value="#">Sleeper</option>
-				                        <option value="#">Luxury</option>
+				                        <option value="AC">AC</option>
+				                        <option value="Non-AC">Non-AC</option>
+				                        <option value="Sleeper">Sleeper</option>
+				                        <option value="Luxury">Luxury</option>
 				                      </select>
 				                    </div>
 				                  </div>
 				                </div>
 				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Cruises" class="btn btn-primary btn-block">
+				                  <input type="submit" name="submit" id="submit" value="Find Trains" class="btn btn-primary btn-block" onclick="handleSubm ()">
 				                </div>
 				              </div>
 				            </form>
