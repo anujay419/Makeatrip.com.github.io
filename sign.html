@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email], input[type=number] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -14,7 +14,7 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -73,20 +73,29 @@ button:hover {
 </style>
 <body>
 
-<form action="connect.php" method="POST"  style="border:1px solid #ccc">
+<form method="post" autocomplete="off" name="signup"  style="border:1px solid #ccc">
   <div class="container">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
-
+    <label for="email"><b>Name</b></label>
+    <input type="text" placeholder="Enter Email" name="name" required>
+    <label for="email"><b>Age</b></label>
+    <input type="number" placeholder="Enter Email" name="age" required>
+    <label for="email"><b>Country</b></label>
+    <input type="text" placeholder="Enter Email" name="country" required>
+    <label for="email"><b>State</b></label>
+    <input type="text" placeholder="Enter Email" name="state" required>
+    <label for="email"><b>City</b></label>
+    <input type="text" placeholder="Enter Email" name="city" required>
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="email" placeholder="Enter Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="Password54" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="repeatpsw" required>
+    <input type="password" placeholder="Repeat Password" name="Repeat-Password" required>
     
     <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -96,10 +105,22 @@ button:hover {
 
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Submit</button>
+      <button type="submit" class="signupbtn"><a href="freshgreenair.html">Submit</a></button>
     </div>
   </div>
 </form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbynfpAPYJ6H-p7QsEQro_feE_io4JnEUagdIXUuy0r6AcPBTsXB/exec'
+  const form = document.forms['signup']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 </body>
 </html>
