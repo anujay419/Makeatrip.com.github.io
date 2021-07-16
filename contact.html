@@ -119,18 +119,18 @@
 							<div class="row form-group">
 								<div class="col-md-6 padding-bottom">
 									<label for="fname">Name</label>
-									<input type="text" id="fname" class="form-control" placeholder="Your firstname" name="name">
+									<input type="text" id="fname" class="form-control" placeholder="Your name" name="name">
 								</div>
 								<div class="col-md-6">
 									<label for="lname">Contact Number</label>
-									<input type="text" id="lname" class="form-control" placeholder="Your lastname" name="contact number">
+									<input type="tel" id="lname" class="form-control" placeholder="Your number" name="contact number"  pattern="[0-9]{10}">
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
 									<label for="email">Email</label>
-									<input type="text" id="email" class="form-control" placeholder="Your email address" name="email">
+									<input type="text" id="email" class="form-control" placeholder="Your email address" name="email" pattern="[^ @]*@[^ @]*">
 								</div>
 							</div>
 
@@ -172,7 +172,7 @@
 						<h3>Contact Information</h3>
 						<div class="row contact-info-wrap">
 							<div class="col-md-3">
-								<p><span><i class="icon-location"></i></span> 291 Ludhiana Highway, <br> Suite 721 Punjab PB 140055</p>
+								<p><span><i class="icon-location"></i></span> <a onclick="getLocation()"> 291 Ludhiana Highway, <br> Suite 721 Punjab PB 140055</a></p>
 							</div>
 							<div class="col-md-3">
 								<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">708845655</a></p>
@@ -188,6 +188,23 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			var x = document.getElementById("demo");
+
+			function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else { 
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+			}
+
+			function showPosition(position) {
+			x.innerHTML = "Latitude: " + position.coords.latitude + 
+			"<br>Longitude: " + position.coords.longitude;
+			}
+		</script>
+
 
 		
 	
